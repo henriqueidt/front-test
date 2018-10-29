@@ -17,7 +17,7 @@ export class DataService {
   }
 
   getFilm(id): Promise<any> {
-    return this.http.get(`https://swapi.co/api/films/${id}`)
+    return this.http.get(`https://swapi.co/api/films/${id}/`)
     .toPromise()
     .then(response => response)
     .catch(error => console.log(error))
