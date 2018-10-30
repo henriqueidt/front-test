@@ -23,4 +23,11 @@ export class DataService {
     .catch(error => console.log(error))
   }
 
+  getCharacter(link): Promise<any> {
+    return this.http.get(link)
+    .toPromise()
+    .then(response => response)
+    .catch(error => console.log(error))
+  }
+
 }

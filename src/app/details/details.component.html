@@ -1,7 +1,20 @@
-<h1 class='is-size-1'>{{ film?.title }}</h1>
+<h1 class='film-name title has-text-black'>{{ film?.title }}</h1>
 
 <ul>
-  <li><strong>Directed by: {{ film?.director }} </strong></li>
-  <li><strong>Produced by: {{ film?.producer }} </strong></li>
-  <li><strong>Released at: {{ film?.release_date }} </strong></li>
+  <li class='basic-info is-size-1'><strong>Directed by: {{ film?.director }} </strong></li>
+  <li class='basic-info is-size-1'><strong>Produced by: {{ film?.producer }} </strong></li>
+  <li class='basic-info is-size-1'><strong>Released at: {{ film?.release_date }} </strong></li>
+  <li class='has-text-white'>{{ film?.opening_crawl }}</li>
+  <li>
+    <h1 class="title is-1">
+      Characters
+    </h1>
+  </li>
+  <div class='characters'>
+    <li class='character' *ngFor='let character of characters'>
+        <a class="button is-rounded">
+          {{ character?.name }}
+        </a>
+    </li>
+  </div>
 </ul>

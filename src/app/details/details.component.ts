@@ -8,6 +8,8 @@ class Film {
   public director: string
   public producer: string
   public release_date: string
+  public opening_crawl: string
+  public characters: Array<string>
 
 
   constructor (object) {
@@ -16,6 +18,16 @@ class Film {
     this.director = object.director
     this.producer = object.producer
     this.release_date = object.release_date
+    this.opening_crawl = object.opening_crawl
+    this.characters = object.characters
+  }
+}
+
+class Character {
+  public name: string
+
+  constructor (object) {
+    this.name = object.name
   }
 }
 
@@ -29,6 +41,9 @@ export class DetailsComponent implements OnInit, OnDestroy {
   id: number;
   private sub: any;
   film: Film;
+  character: Character
+  characterLinks = [];
+  characters = [];
 
   constructor(private data: DataService, private route: ActivatedRoute) {
 
@@ -61,8 +76,21 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.data.getFilm(this.id)
       .then(response => {
           this.film = new Film(response)
+          this.characterLinks = this.film.characters
+          this.checkCharacters(this.characterLinks)
       })
       .catch(error => console.log(error))
+  }
+
+  checkCharacters(links): void {
+    for (var i = 0; i < links.length; i++){
+      this.data.getCharacter(links[i])
+      .then(response => {
+        this.character = new Character(response)
+        this.characters.push(this.character)
+      })
+      .catch(error => console.log(error))
+    }
   }
 
   ngOnDestroy() {
