@@ -1,9 +1,8 @@
 <h1 class='film-name title has-text-black'>{{ film?.title }}</h1>
-
 <ul>
-  <li class='basic-info is-size-1'><strong>Directed by: {{ film?.director }} </strong></li>
-  <li class='basic-info is-size-1'><strong>Produced by: {{ film?.producer }} </strong></li>
-  <li class='basic-info is-size-1'><strong>Released at: {{ film?.release_date }} </strong></li>
+  <li class='basic-info is-size-1'>Directed by: {{ film?.director }}</li>
+  <li class='basic-info is-size-1'>Produced by: {{ film?.producer }}</li>
+  <li class='basic-info is-size-1'>Released at: {{ film?.release_date }}</li>
   <li class='has-text-white'>{{ film?.opening_crawl }}</li>
   <li>
     <h1 class="title is-1">
@@ -11,9 +10,12 @@
     </h1>
   </li>
   <div class='characters'>
+      <div class='loading' *ngIf='characters.length == 0'>
+          <mat-spinner></mat-spinner>
+        </div>
     <li class='character' *ngFor='let character of characters'>
-        <a class="button is-rounded" [routerLink]="['/character', character.id]">
-          {{ character?.name }}
+        <a class="character-list" [routerLink]="['/character', character.id]">
+         <strong> {{ character?.name }} </strong>
         </a>
     </li>
   </div>

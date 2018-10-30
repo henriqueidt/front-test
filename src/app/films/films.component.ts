@@ -22,6 +22,7 @@ class Film {
 export class FilmsComponent implements OnInit {
 
   film: Film;
+  loading: Boolean = true;
 
   films = [];
 
@@ -34,12 +35,12 @@ export class FilmsComponent implements OnInit {
   checkFilms(): void {
     this.data.getFilms()
       .then(response => {
-         response.results.forEach((item) => {
-        this.film = new Film(item)
-        this.film.id = this.film.id
-        this.film.title = this.film.title
-        this.film.director = this.film.director
-        this.films.push(this.film)
+        response.results.forEach((item) => {
+          this.film = new Film(item)
+          this.film.id = this.film.id
+          this.film.title = this.film.title
+          this.film.director = this.film.director
+          this.films.push(this.film)
         })
       })
       .catch(error => console.log(error))

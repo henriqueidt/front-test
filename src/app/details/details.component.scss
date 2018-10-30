@@ -3,10 +3,13 @@
 }
 .title {
   -webkit-text-stroke: 3px yellow;
+  color: transparent !important;
 }
 
 .basic-info {
+  color: transparent !important;
   -webkit-text-stroke: 2px white;
+  font-weight: bolder;
 }
 
 .characters {
@@ -18,7 +21,14 @@
   height: 20%;
   flex-wrap: wrap;
   .character {
-    margin: 0.5%;
+    margin: 0.5% 1% 0.5% 1%;
+    .character-list {
+      color: yellow;
+      font-size: 2rem;
+      &:hover {
+        color: #e6b800;
+      }
+    }
   }
 }
 

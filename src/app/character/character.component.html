@@ -1,6 +1,10 @@
+<div class='loading' *ngIf='!character'>
+    <mat-spinner></mat-spinner>
+  </div>
+
 <h1 class='character-name title has-text-black'>{{ character?.name }}</h1>
 <ul>
-    <li class='basic-info is-size-1'><strong>Height: {{ character?.height }} </strong></li>
-    <li class='basic-info is-size-1'><strong>Mass: {{ character?.mass }} </strong></li>
-    <li class='basic-info is-size-1'><strong>Eye color: {{ character?.eye_color }} </strong></li>
+    <li class='basic-info is-size-1' *ngIf='character'>Height: {{ character.height }} <span *ngIf="character.height != 'unknown'"> cm</span> </li>
+    <li class='basic-info is-size-1' *ngIf='character'>Mass: {{ character.mass }} <span *ngIf="character.mass != 'unknown'"> kg</span> </li>
+    <li class='basic-info is-size-1' *ngIf='character'>Eye color: {{ character.eye_color }} </li>
 </ul>

@@ -1,9 +1,19 @@
 
 .title {
   font-size: 6rem;
+  color: transparent !important;
   -webkit-text-stroke: 3px yellow;
 }
  a {
   -webkit-text-stroke: 3px yellow;
+  &:hover {
+    -webkit-text-stroke: 3px #e6b800;
+  }
+ }
+
+ .loading {
+   position: fixed;
+   top: 50%;
+   left: 50%;
  }
 
