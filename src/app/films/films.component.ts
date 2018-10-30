@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { forEach } from '@angular/router/src/utils/collection';
 
 class Film {
   public id: number

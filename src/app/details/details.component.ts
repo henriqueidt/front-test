@@ -25,9 +25,13 @@ class Film {
 
 class Character {
   public name: string
+  public url: string
+  public id: number
 
   constructor (object) {
     this.name = object.name
+    this.url = object.url
+    this.id = object.id
   }
 }
 
@@ -83,10 +87,13 @@ export class DetailsComponent implements OnInit, OnDestroy {
   }
 
   checkCharacters(links): void {
-    for (var i = 0; i < links.length; i++){
+    let i, j = 0;
+    for (i = 0; i < links.length; i++){
       this.data.getCharacter(links[i])
       .then(response => {
         this.character = new Character(response)
+        let id = this.character.url.split('/')
+        this.character.id = parseInt(id[5])
         this.characters.push(this.character)
       })
       .catch(error => console.log(error))
