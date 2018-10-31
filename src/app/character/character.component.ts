@@ -23,17 +23,17 @@ class Character {
 })
 export class CharacterComponent implements OnInit {
 
-  private sub: any;
-  id: number;
-  character: Character;
+  private sub: any
+  public id: number
+  public character: Character
 
   constructor(private data: DataService, private route: ActivatedRoute) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id'];
+      this.id = +params['id']
     })
-    this.checkCharacter();
+    this.checkCharacter()
   }
 
   checkCharacter(): void {
@@ -43,5 +43,4 @@ export class CharacterComponent implements OnInit {
     })
     .catch(error => console.log(error))
   }
-
 }

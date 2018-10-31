@@ -11,7 +11,6 @@ class Film {
   public opening_crawl: string
   public characters: Array<string>
 
-
   constructor (object) {
     this.id = object.id
     this.title = object.title
@@ -42,38 +41,37 @@ class Character {
 })
 export class DetailsComponent implements OnInit, OnDestroy {
 
-  id: number;
-  private sub: any;
-  film: Film;
-  character: Character
-  characterLinks = [];
-  characters = [];
+  public id: number
+  private sub: any
+  public film: Film
+  public character: Character
+  public characterLinks: Array<string> = []
+  public characters: Array<object> = []
+  public isLoaded: boolean = false
 
-  constructor(private data: DataService, private route: ActivatedRoute) {
+  constructor(private data: DataService, private route: ActivatedRoute) {  }
 
-  }
-
-  ngOnInit() {
+  ngOnInit(): void {
 
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id'];
+      this.id = +params['id']
       switch (this.id) {
         case 1:
         case 2:
         case 3:
-          this.id = this.id + 3;
-          break;
+          this.id = this.id + 3
+          break
         case 4:
         case 5:
         case 6:
-          this.id = this.id -3;
-          break;
+          this.id = this.id -3
+          break
         default:
-          break;
+          break
       }
     })
 
-    this.checkDetails();
+    this.checkDetails()
    }
 
   checkDetails(): void {
@@ -86,8 +84,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
       .catch(error => console.log(error))
   }
 
-  checkCharacters(links): void {
-    let i, j = 0;
+  checkCharacters(links: Array<string>): void {
+    let i
     for (i = 0; i < links.length; i++){
       this.data.getCharacter(links[i])
       .then(response => {
@@ -98,10 +96,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
       })
       .catch(error => console.log(error))
     }
+    this.isLoaded = true
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.sub.unsubscribe()
   }
-
 }

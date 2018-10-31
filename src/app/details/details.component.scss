@@ -20,6 +20,11 @@
   font-size: 1rem;
   height: 20%;
   flex-wrap: wrap;
+  .loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+  }
   .character {
     margin: 0.5% 1% 0.5% 1%;
     .character-list {
@@ -31,4 +36,3 @@
     }
   }
 }
-

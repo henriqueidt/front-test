@@ -6,7 +6,6 @@ class Film {
   public title: string
   public director: string
 
-
   constructor (object) {
     this.id = object.episode_id
     this.title = object.title
@@ -21,15 +20,14 @@ class Film {
 })
 export class FilmsComponent implements OnInit {
 
-  film: Film;
-  loading: Boolean = true;
-
-  films = [];
+  public film: Film
+  public loading: Boolean = true
+  public films: Array<object> = []
 
   constructor(private data: DataService) { }
 
-  ngOnInit() {
-    this.checkFilms();
+  ngOnInit(): void {
+    this.checkFilms()
   }
 
   checkFilms(): void {
@@ -45,5 +43,4 @@ export class FilmsComponent implements OnInit {
       })
       .catch(error => console.log(error))
   }
-
 }

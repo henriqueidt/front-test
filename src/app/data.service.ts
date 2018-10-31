@@ -16,14 +16,14 @@ export class DataService {
     .catch(error => console.log(error))
   }
 
-  getFilm(id): Promise<any> {
+  getFilm(id: number): Promise<any> {
     return this.http.get(`https://swapi.co/api/films/${id}/`)
     .toPromise()
     .then(response => response)
     .catch(error => console.log(error))
   }
 
-  getCharacter(link): Promise<any> {
+  getCharacter(link: string): Promise<any> {
     return this.http.get(link)
     .toPromise()
     .then(response => response)

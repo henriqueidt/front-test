@@ -1,6 +1,12 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 html {
-  background: url('./assets/images/background3.png') no-repeat;
-  //background: black;
+  background: url('./assets/images/background3.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: yellow !important;
+  }
